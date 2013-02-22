@@ -9,14 +9,15 @@ class StringCalculator
   end
   
   def self.get_delimiter string
+    delims = ["\n", ","]
     if string.start_with?("//")
       if string[2] == "["
-        return  string.scan(/\[([^\[\]]*)\]/).flatten
+        delims.concat(string.scan(/\[([^\[\]]*)\]/).flatten)
       else
-        return [] << string[2]
+        delims  << string[2]
       end
     end
-    return []
+    delims
   end
 
   private
@@ -26,7 +27,7 @@ class StringCalculator
   end
 
   def self.replace_all_delimiters_with_commas numbers
-    normalized_numbers = numbers.gsub("\n", ',')
+    normalized_numbers = numbers
     custom_delimiter = get_delimiter numbers
     custom_delimiter.each do |d|
       normalized_numbers.gsub!(d, ',') if d

@@ -34,7 +34,7 @@ describe StringCalculator do
       StringCalculator.get_delimiter("//|\n1|2").should include("|")
     end
     it "returns an empty array for '1,2'" do
-      StringCalculator.get_delimiter("1,2").should == []
+      StringCalculator.get_delimiter("1,2").should == ["\n", ","]
     end
     it "returns *** for '//[***]\n1,2'" do
       StringCalculator.get_delimiter("//[***]\n1,2").should include("***")
