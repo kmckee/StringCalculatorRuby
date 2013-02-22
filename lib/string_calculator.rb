@@ -14,7 +14,7 @@ class StringCalculator
       if string[2] == "["
         delims.concat(string.scan(/\[([^\[\]]*)\]/).flatten)
       else
-        delims  << string[2]
+        delims << string[2]
       end
     end
     delims
