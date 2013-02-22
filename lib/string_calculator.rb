@@ -26,7 +26,7 @@ class StringCalculator
   end
 
   def self.replace_all_delimiters_with_commas numbers
-    normalized_numbers = numbers.gsub('/n', ',')
+    normalized_numbers = numbers.gsub("\n", ',')
     custom_delimiter = get_delimiter numbers
     custom_delimiter.each do |d|
       normalized_numbers.gsub!(d, ',') if d
