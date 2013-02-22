@@ -29,18 +29,18 @@ describe StringCalculator do
       StringCalculator.add("//[*][%][~]\n1*2%3~4").should == 10
     end
   end
-  describe "#get_delimiter" do
+  describe "#get_delimiters_for" do
     it "returns '|' for '//|\n1|2" do
-      StringCalculator.get_delimiter("//|\n1|2").should include("|")
+      StringCalculator.get_delimiters_for("//|\n1|2").should include("|")
     end
     it "returns an empty array for '1,2'" do
-      StringCalculator.get_delimiter("1,2").should == ["\n", ","]
+      StringCalculator.get_delimiters_for("1,2").should == ["\n", ","]
     end
     it "returns *** for '//[***]\n1,2'" do
-      StringCalculator.get_delimiter("//[***]\n1,2").should include("***")
+      StringCalculator.get_delimiters_for("//[***]\n1,2").should include("***")
     end
     it "allows for multiple custom delimiters" do
-      StringCalculator.get_delimiter("//[*][%]\n1,2").should include("*", "%")
+      StringCalculator.get_delimiters_for("//[*][%]\n1,2").should include("*", "%")
     end
   end
 end

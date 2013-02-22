@@ -8,7 +8,7 @@ class StringCalculator
     valid_numbers.inject(0) { |sum, n| sum + n }
   end
   
-  def self.get_delimiter string
+  def self.get_delimiters_for string
     delims = ["\n", ","]
     if string.start_with?("//")
       if string[2] == "["
@@ -27,7 +27,7 @@ class StringCalculator
   end
 
   def self.replace_all_delimiters_with_commas numbers
-    get_delimiter(numbers).each do |d|
+    get_delimiters_for(numbers).each do |d|
       numbers.gsub!(d, ',') if d
     end
     numbers
